@@ -1,0 +1,2 @@
+DATABASE_URL=postgresql://hercity:hercity_dev_password@localhost:5433/hercity
+FRONTEND_ORIGIN=http://localhost:5173

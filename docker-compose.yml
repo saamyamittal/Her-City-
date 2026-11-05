@@ -1,0 +1,20 @@
+services:
+  db:
+    image: postgis/postgis:16-3.4
+    container_name: hercity-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: hercity
+      POSTGRES_USER: hercity
+      POSTGRES_PASSWORD: hercity_dev_password
+    ports:
+      - "5433:5432"
+    volumes:
+      - hercity_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U hercity -d hercity"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+volumes:
+  hercity_pgdata:
